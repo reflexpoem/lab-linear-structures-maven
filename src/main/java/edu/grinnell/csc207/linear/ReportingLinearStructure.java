@@ -50,13 +50,19 @@ public class ReportingLinearStructure<T> implements LinearStructure<T> {
     this(ls, new PrintWriter(System.out, true), prefix);
   } // ReportingLinearStructure(LinearStructure<T>)
 
-  /**
-   * Build a new experiment that uses ls to do the real work and prints 
-   * comments to stdout using no prefix.
-   */
+  // /**
+  //  * Build a new experiment that uses ls to do the real work and prints 
+  //  * comments to stdout using no prefix.
+  //  */
+  // public ReportingLinearStructure(LinearStructure<T> ls) {
+  //   this(ls, new PrintWriter(System.out, true), "");
+  // } // ReportingLinearStructure(LinearStructure<T>)
+
   public ReportingLinearStructure(LinearStructure<T> ls) {
-    this(ls, new PrintWriter(System.out, true), "");
-  } // ReportingLinearStructure(LinearStructure<T>)
+    this.pen = new PrintWriter(System.err, true);
+    this.prefix = ls.getClass().getName() + ".";
+    this.ls = ls;
+  }
 
   // +-------------------------+-----------------------------------------
   // | LinearStructure Methods |
